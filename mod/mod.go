@@ -12,7 +12,7 @@ import (
 
 const versionURL = "https://golang.org/dl/?mode=json"
 
-func Check(modpath string) error {
+func Check(modpath string, lax bool) error {
 	b, err := os.ReadFile(modpath)
 	if err != nil {
 		return err
@@ -27,6 +27,14 @@ func Check(modpath string) error {
 		return err
 	}
 	oldstable := versions[1]
+	if lax {
+		splitted := strings.Split(oldstable, ".")
+		minor := strings.Join(splitted[:2], ".")
+		if !strings.HasPrefix(goDirectiveVersion, minor) {
+			return fmt.Errorf("version of go directive in go.mod is not oldstable (oldstable minor: %s, current: %s)", minor, goDirectiveVersion)
+		}
+		return nil
+	}
 	if goDirectiveVersion != oldstable {
 		return fmt.Errorf("version of go directive in go.mod is not latest oldstable (oldstable: %s, current: %s)", oldstable, goDirectiveVersion)
 	}

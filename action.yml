@@ -12,6 +12,10 @@ inputs:
     description: The path to go.mod file
     default: 'go.mod'
     required: false
+  lax:
+    description: 'If true, patch version not checked.'
+    default: false
+    required: false
 runs:
   using: "composite"
   steps:
