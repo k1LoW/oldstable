@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -15,25 +16,44 @@ func TestCheck(t *testing.T) {
 	stable := versions[0]
 	oldstable := versions[1]
 
+	splitted := strings.Split(oldstable, ".")
+	minor := strings.Join(splitted[:2], ".")
+
 	tests := []struct {
 		name    string
 		goVer   string
+		lax     bool
 		wantErr bool
 	}{
 		{
 			name:    "oldestversion",
 			goVer:   "1.17",
+			lax:     false,
 			wantErr: true,
 		},
 		{
 			name:    "stable",
 			goVer:   stable,
+			lax:     false,
 			wantErr: true,
 		},
 		{
 			name:    "oldstable",
 			goVer:   oldstable,
+			lax:     false,
 			wantErr: false,
+		},
+		{
+			name:    "lax",
+			goVer:   minor,
+			lax:     true,
+			wantErr: false,
+		},
+		{
+			name:    "not lax",
+			goVer:   minor,
+			lax:     false,
+			wantErr: true,
 		},
 	}
 	for _, tt := range tests {
@@ -42,7 +62,7 @@ func TestCheck(t *testing.T) {
 			if err := os.WriteFile(modpath, []byte(fmt.Sprintf("module %s\n\ngo %s\n", t.TempDir(), tt.goVer)), 0600); err != nil {
 				t.Fatal(err)
 			}
-			if err := Check(modpath); (err != nil) != tt.wantErr {
+			if err := Check(modpath, tt.lax); (err != nil) != tt.wantErr {
 				t.Errorf("error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})

@@ -28,6 +28,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var lax bool
+
 var rootCmd = &cobra.Command{
 	Use:          "oldstable [GO.MOD FILE]",
 	Short:        "Check if version of go directive in go.mod is oldstable",
@@ -39,7 +41,7 @@ var rootCmd = &cobra.Command{
 		if len(args) == 1 {
 			modpath = args[0]
 		}
-		if err := mod.Check(modpath); err != nil {
+		if err := mod.Check(modpath, lax); err != nil {
 			return err
 		}
 		return nil
@@ -52,4 +54,6 @@ func Execute() {
 	}
 }
 
-func init() {}
+func init() {
+	rootCmd.Flags().BoolVarP(&lax, "lax", "", false, "patch version not checked")
+}
