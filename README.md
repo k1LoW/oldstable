@@ -21,5 +21,5 @@ Error: version of go directive in go.mod is not latest oldstable (oldstable: 1.2
     steps:
       -
         name: Check if version of go directive in go.mod is oldstable
-        uses: k1LoW/oldstable@v0
+        uses: k1LoW/oldstable@v1
 ```
