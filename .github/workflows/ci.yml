@@ -42,9 +42,12 @@ jobs:
            go-version-file: go.mod
            repo-checkout: false
            go-package: ./...
-          
+
       - name: Run tests
         run: make ci
+
+      - name: Run oldstable
+        uses: ./
 
       - name: Run octocov
         uses: k1LoW/octocov-action@v1
