@@ -42,7 +42,7 @@ type version struct {
 }
 
 func fetchVersions() ([]string, error) {
-	if len(cached) == 0 {
+	if len(cached) != 0 {
 		return cached, nil
 	}
 	res, err := http.Get(versionURL)
