@@ -23,3 +23,16 @@ Error: version of go directive in go.mod is not latest oldstable (oldstable: 1.2
         name: Check if version of go directive in go.mod is oldstable
         uses: k1LoW/oldstable@v1
 ```
+
+## Checking rule
+
+| oldstable | go directive | lax mode (`--lax`) | check |
+| --- | --- | --- | --- |
+| `1.21.11` | `1.21.11` | `false` | **ok** |
+| `1.21.11` | `1.21.6` | `false` | **ng** |
+| `1.21.11` | `1.22.4` | `false` | **ng** |
+| `1.21.11` | `1.21` | `false` | **ng** |
+| `1.21.11` | `1.21.6` | `true` | **ok** |
+| `1.21.11` | `1.22.4` | `true` | **ng** |
+| `1.21.11` | `1.21` | `true` | **ok** |
+
