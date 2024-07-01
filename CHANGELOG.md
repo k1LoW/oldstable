@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.0.0](https://github.com/k1LoW/oldstable/compare/v0.1.0...v1.0.0) - 2024-07-01
+### Other Changes
+- v1 by @k1LoW in https://github.com/k1LoW/oldstable/pull/7
+
 ## [v0.1.0](https://github.com/k1LoW/oldstable/compare/v0.0.3...v0.1.0) - 2024-07-01
 ### Other Changes
 - Setup as Action by @k1LoW in https://github.com/k1LoW/oldstable/pull/4
