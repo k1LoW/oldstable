@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.1.0](https://github.com/k1LoW/oldstable/compare/v1...v1.1.0) - 2024-07-01
+### New Features 🎉
+- Add lax mode by @k1LoW in https://github.com/k1LoW/oldstable/pull/8
+
 ## [v1.0.0](https://github.com/k1LoW/oldstable/compare/v0.1.0...v1.0.0) - 2024-07-01
 ### Other Changes
 - v1 by @k1LoW in https://github.com/k1LoW/oldstable/pull/7
