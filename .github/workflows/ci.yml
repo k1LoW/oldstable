@@ -39,15 +39,18 @@ jobs:
       - name: Run govulncheck
         uses: golang/govulncheck-action@v1
         with:
-           go-version-file: go.mod
-           repo-checkout: false
-           go-package: ./...
+          go-version-input: oldstable
+          go-version-file: go.mod
+          repo-checkout: false
+          go-package: ./...
 
       - name: Run tests
         run: make ci
 
       - name: Run oldstable
         uses: ./
+        with:
+          lax: true
 
       - name: Run octocov
         uses: k1LoW/octocov-action@v1

@@ -1,6 +1,6 @@
 module github.com/k1LoW/oldstable
 
-go 1.21.11
+go 1.22
 
 require (
 	github.com/spf13/cobra v1.8.1
