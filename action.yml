@@ -25,5 +25,5 @@ runs:
           github-token: ${{ inputs.github-token }}
           repo: k1LoW/oldstable
     -
-      run: oldstable ${{ inputs.go-mod-file }}
+      run: oldstable ${{ inputs.go-mod-file }} ${{ inputs.lax && '--lax' || '' }}
       shell: bash
