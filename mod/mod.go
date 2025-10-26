@@ -38,6 +38,21 @@ func Check(modpath string, lax bool) error {
 		// Allow oldstable version or older
 		return nil
 	}
+
+	// Check if go directive has patch version
+	goDirectiveParts := strings.Split(goDirectiveVersion, ".")
+	oldstableParts := strings.Split(oldstable, ".")
+
+	// If go directive does not have patch version (e.g., "1.21"), compare only major.minor
+	if len(goDirectiveParts) == 2 {
+		oldstableMinor := strings.Join(oldstableParts[:2], ".")
+		if goDirectiveVersion != oldstableMinor {
+			return fmt.Errorf("version of go directive in go.mod is not oldstable (oldstable: %s, current: %s)", oldstable, goDirectiveVersion)
+		}
+		return nil
+	}
+
+	// If go directive has patch version, compare full version
 	if goDirectiveVersion != oldstable {
 		return fmt.Errorf("version of go directive in go.mod is not latest oldstable (oldstable: %s, current: %s)", oldstable, goDirectiveVersion)
 	}

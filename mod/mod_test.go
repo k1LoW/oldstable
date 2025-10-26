@@ -65,7 +65,7 @@ func TestCheck(t *testing.T) {
 			name:    "not lax with oldstable minor version",
 			goVer:   minor,
 			lax:     false,
-			wantErr: true,
+			wantErr: false, // Should succeed when go directive has no patch version
 		},
 		{
 			name:    "lax with older version",
@@ -77,6 +77,18 @@ func TestCheck(t *testing.T) {
 			name:    "lax with stable version",
 			goVer:   stable,
 			lax:     true,
+			wantErr: true,
+		},
+		{
+			name:    "not lax with wrong minor version (no patch)",
+			goVer:   "1.17",
+			lax:     false,
+			wantErr: true,
+		},
+		{
+			name:    "not lax with wrong patch version",
+			goVer:   minor + ".0",
+			lax:     false,
 			wantErr: true,
 		},
 	}
