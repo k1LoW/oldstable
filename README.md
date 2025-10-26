@@ -38,4 +38,4 @@ Error: version of go directive in go.mod is not latest oldstable (oldstable: 1.2
 | `1.21.11` | `1.21.6` | `true` | **ok** |
 | `1.21.11` | `1.22.4` | `true` | **ng** |
 | `1.21.11` | `1.21` | `true` | **ok** |
-
+| `1.21.11` | `1.20` | `true` | **ng** |
