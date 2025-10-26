@@ -2,4 +2,4 @@ package version
 
 const Name string = "oldstable"
 
-var Version = "1.1.1" //nostyle:repetition
+var Version = "2.0.0" //nostyle:repetition
