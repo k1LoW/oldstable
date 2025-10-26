@@ -55,5 +55,5 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().BoolVarP(&lax, "lax", "", false, "patch version not checked")
+	rootCmd.Flags().BoolVarP(&lax, "lax", "", false, "allow oldstable version or older (error only on stable version)")
 }

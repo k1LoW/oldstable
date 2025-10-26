@@ -26,13 +26,16 @@ func Check(modpath string, lax bool) error {
 	if err != nil {
 		return err
 	}
+	stable := versions[0]
 	oldstable := versions[1]
 	if lax {
-		splitted := strings.Split(oldstable, ".")
-		minor := strings.Join(splitted[:2], ".")
-		if !strings.HasPrefix(goDirectiveVersion, minor) {
-			return fmt.Errorf("version of go directive in go.mod is not oldstable (oldstable minor: %s, current: %s)", minor, goDirectiveVersion)
+		// In lax mode, error only if the version is stable (latest version)
+		splittedStable := strings.Split(stable, ".")
+		stableMinor := strings.Join(splittedStable[:2], ".")
+		if strings.HasPrefix(goDirectiveVersion, stableMinor) {
+			return fmt.Errorf("version of go directive in go.mod is stable version (stable: %s, current: %s)", stable, goDirectiveVersion)
 		}
+		// Allow oldstable version or older
 		return nil
 	}
 	if goDirectiveVersion != oldstable {
