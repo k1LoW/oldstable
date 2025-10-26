@@ -55,6 +55,12 @@ func TestCheck(t *testing.T) {
 			lax:     false,
 			wantErr: true,
 		},
+		{
+			name:    "lax oldestversion",
+			goVer:   "1.17",
+			lax:     true,
+			wantErr: true,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
