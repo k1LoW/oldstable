@@ -13,7 +13,7 @@ inputs:
     default: 'go.mod'
     required: false
   lax:
-    description: 'If true, patch version not checked.'
+    description: 'If true, allow oldstable version or older (error only on stable version).'
     default: false
     required: false
 runs:
