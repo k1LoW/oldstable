@@ -1,5 +1,10 @@
 # Changelog
 
+## [v2.0.1](https://github.com/k1LoW/oldstable/compare/v2...v2.0.1) - 2026-09-28
+
+### Other Changes
+- ci: generate CREDITS with gocredits v1.0.0 from a make target by @k1LoW in https://github.com/k1LoW/oldstable/pull/17
+
 ## [v2.0.0](https://github.com/k1LoW/oldstable/compare/v1.1.1...v2.0.0) - 2025-10-26
 ### Breaking Changes 🛠
 - fix: enhance lax mode to support oldstable and older versions by @k1LoW in https://github.com/k1LoW/oldstable/pull/15
